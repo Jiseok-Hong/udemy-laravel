@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/main', function () {
+    
     return view('welcome');
 })->name('main.index');
 
@@ -28,5 +29,17 @@ Route::get('/home', function () {
 
 
 Route::get('/blog/{id}/{random?}', function ($blogId, $ageId = 0) {
-    return 'homepage ' . $blogId . $ageId;
+    $post = [
+        1 => [
+            "name" => "Ji",
+        ],
+        2 => [
+            "name" => "Hong",
+        ],
+        3 => [
+            "name" => "Seok",
+        ]];
+    return view('blog.index', [
+        "posts" => $post[$blogId], 
+        "age" => $ageId]);
 })->name('home.index');
